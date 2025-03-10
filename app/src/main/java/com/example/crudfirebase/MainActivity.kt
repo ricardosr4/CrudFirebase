@@ -18,3 +18,4 @@ class MainActivity : ComponentActivity() {
 
 //se eleiminan archivos
 //prueba 1
+//se eliminan archivos de .idea para ser ignorados
