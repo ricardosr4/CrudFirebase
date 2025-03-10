@@ -3,6 +3,7 @@ package com.example.crudfirebase
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.example.crudfirebase.ui.screen.login.LoginScreen
 import com.example.crudfirebase.ui.theme.CrudFirebaseTheme
 
 class MainActivity : ComponentActivity() {
@@ -10,6 +11,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CrudFirebaseTheme {
+                LoginScreen()
 
             }
         }
