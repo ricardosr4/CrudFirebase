@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CrudFirebase</string>
+    <string name="register">Registrar</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="login">Entrar</string>
+    <string name="email">Correo</string>
 </resources>
