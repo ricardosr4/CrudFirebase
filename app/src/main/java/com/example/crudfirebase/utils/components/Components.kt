@@ -1,5 +1,6 @@
 package com.example.crudfirebase.utils.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
@@ -32,6 +32,7 @@ fun ZetaSpaceHeight(size: Dp = 10.dp) {
 fun ZetaSpaceWidth(size: Dp = 10.dp) {
     Spacer(modifier = Modifier.width(size))
 }
+
 @Composable
 fun ZetaOutlinedTextField(
     value: String,
@@ -40,7 +41,7 @@ fun ZetaOutlinedTextField(
     keyboardType: KeyboardType = KeyboardType.Email,
     visualTransformation: VisualTransformation = VisualTransformation.None
 
-){
+) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
@@ -57,33 +58,38 @@ fun ZetaOutlinedTextField(
 
 @Composable
 fun ZetaButtonBasic(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
     text: String,
     color: Color = MaterialTheme.colorScheme.primary,
     textSize: TextUnit = 16.sp,
-    onClick: () -> Unit){
+
+) {
     OutlinedButton(
         onClick = onClick,
+        border = BorderStroke(1.dp, color),
         colors = ButtonDefaults.outlinedButtonColors(
             contentColor = color,
-            containerColor = Color.Transparent
-        ),
+            containerColor = Color.Transparent,
+
+            ),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 50.dp)
+            .padding(horizontal = 30.dp)
 
     ) {
         Text(text = text, fontSize = textSize)
     }
-
 }
+
 @Composable
 fun ZetaAlertDialog(
     title: String,
-    message:String,
+    message: String,
     confirmText: String,
     onConfirmClick: () -> Unit,
     onDismissClick: () -> Unit
-){
+) {
     AlertDialog(
         onDismissRequest = onDismissClick,
         title = { Text(text = title) },
@@ -99,10 +105,11 @@ fun ZetaAlertDialog(
 
 @Composable
 fun ZetaText(
+    modifier: Modifier = Modifier,
     text: String,
     color: Color = Color.Black,
     fontSize: TextUnit = 16.sp,
-    modifier: Modifier = Modifier
+
 ) {
     Text(
         text = text,
