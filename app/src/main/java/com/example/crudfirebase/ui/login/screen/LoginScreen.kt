@@ -3,6 +3,8 @@ package com.example.crudfirebase.ui.login.screen
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -14,6 +16,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.crudfirebase.R
 import com.example.crudfirebase.ui.login.viewModel.LoginViewModel
 import com.example.crudfirebase.utils.components.ZetaButtonBasic
@@ -22,7 +25,10 @@ import com.example.crudfirebase.utils.components.ZetaSpaceHeight
 import com.example.crudfirebase.utils.components.ZetaText
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel){
+fun LoginScreen(
+    navController: NavController,
+    viewModel: LoginViewModel
+) {
 
     val state by viewModel.loginState.collectAsState()
 
@@ -49,20 +55,27 @@ fun LoginScreen(viewModel: LoginViewModel){
         ZetaSpaceHeight(20.dp)
         ZetaOutlinedTextField(
             value = state.password,
-            onValueChange = { viewModel.onPasswordChange(it)},
+            onValueChange = { viewModel.onPasswordChange(it) },
             label = stringResource(R.string.password),
             keyboardType = KeyboardType.Password,
             visualTransformation = PasswordVisualTransformation()
 
         )
-        ZetaSpaceHeight(100.dp)
+        ZetaSpaceHeight(50.dp)
+
+        TextButton(onClick = { navController.navigate("register_screen") },
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)) {
+            Text(text = stringResource(R.string.message_login), color = Color.Blue, fontSize = 16.sp)
+        }
+
+
+        ZetaSpaceHeight(70.dp)
         ZetaButtonBasic(
             text = stringResource(R.string.login),
             color = Color.Black,
             textSize = 20.sp,
-            onClick = { /*TODO*/ }
+            onClick = {  }
         )
-
-
     }
 }
