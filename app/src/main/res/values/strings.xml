@@ -5,4 +5,6 @@
     <string name="confirm_password">Confirmar contraseña</string>
     <string name="login">Entrar</string>
     <string name="email">Correo</string>
+    <string name="message_login">Si no tienes cuenta Regístrate aquí!!</string>
+    <string name="message_register">Si ya tienes una cuenta entra aqui!!</string>
 </resources>
