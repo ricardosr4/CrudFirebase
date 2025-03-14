@@ -75,7 +75,9 @@ fun LoginScreen(
             text = stringResource(R.string.login),
             color = Color.Black,
             textSize = 20.sp,
-            onClick = {  }
+            onClick = { viewModel.login(email = state.email, password = state.password) {
+                navController.navigate("home_screen")
+            } }
         )
     }
 }
