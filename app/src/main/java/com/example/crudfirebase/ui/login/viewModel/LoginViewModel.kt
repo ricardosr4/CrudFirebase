@@ -35,6 +35,7 @@ class LoginViewModel : ViewModel() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             onSuccess()
+                            cleanFields()
                         } else {
                             Log.d("ERROR EN FIREBASE", "Usuario y contraseña incorrectos")
                         }
@@ -43,5 +44,9 @@ class LoginViewModel : ViewModel() {
                 Log.d("ERROR EN FIREBASE", "Error: ${e.localizedMessage}")
             }
         }
+    }
+    private fun cleanFields() {
+        _loginState.value = LoginState()
+
     }
 }

@@ -32,8 +32,6 @@ fun LoginScreen(
 
     val state by viewModel.loginState.collectAsState()
 
-
-
     Column {
         ZetaText(
             text = stringResource(R.string.login),

@@ -83,7 +83,9 @@ fun RegisterScreen(
             text = stringResource(R.string.register),
             color = Color.Black,
             textSize = 20.sp,
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.createUser(email = state.email, password = state.password ){
+                navController.navigate("login_screen")
+            } },
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .fillMaxWidth()
