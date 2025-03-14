@@ -27,7 +27,7 @@ class LoginViewModel : ViewModel() {
     fun onPasswordChange(password: String) {
         _loginState.value = _loginState.value.copy(password = password)
     }
-//funcion para entrar con usuario y contraseña
+//funcion para entrar con usuario y contraseña.
     fun login(email: String, password: String, onSuccess: () -> Unit) {
         viewModelScope.launch {
             try {
