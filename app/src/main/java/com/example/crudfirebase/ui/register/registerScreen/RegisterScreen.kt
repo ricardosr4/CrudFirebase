@@ -100,7 +100,7 @@ fun RegisterScreen(
             onClick = {
                 viewModel.createUser(
                     email = state.email,
-                    name = state.name,
+                    userName = state.name,
                     password = state.password,
                     confirmPassword = state.confirmPassword
                 ) {

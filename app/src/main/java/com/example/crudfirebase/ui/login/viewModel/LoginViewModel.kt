@@ -20,7 +20,6 @@ class LoginViewModel : ViewModel() {
 
     private val _loginState = MutableStateFlow(LoginState())
     val loginState: StateFlow<LoginState> = _loginState.asStateFlow()
-//    var showAlert by mutableStateOf(false)
 
     fun onEmailChange(email: String) {
         _loginState.value = _loginState.value.copy(email = email)
@@ -66,4 +65,32 @@ class LoginViewModel : ViewModel() {
             _loginState.value = loginState.value.copy(showAlert = true)
         }
     }
+
+    // Función para recuperar la contraseña
+    fun resetPassword(email: String, onSuccess: () -> Unit) {
+        if (email.isNotEmpty()) {
+            viewModelScope.launch {
+                try {
+                    auth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Log.d("RECUPERACIÓN", "Correo enviado para recuperar la contraseña.")
+                                onSuccess()
+                            } else {
+                                Log.d("RECUPERACIÓN", "Error al enviar el correo de recuperación.")
+                                _loginState.value = loginState.value.copy(showAlert = true)
+                            }
+                        }
+                } catch (e: Exception) {
+                    Log.d("ERROR EN FIREBASE", "Error: ${e.localizedMessage}")
+                }
+            }
+        } else {
+            Log.d("VALIDACION", "El campo de correo está vacío.")
+            _loginState.value = loginState.value.copy(showAlert = true)
+        }
+    }
+
+
+
 }
