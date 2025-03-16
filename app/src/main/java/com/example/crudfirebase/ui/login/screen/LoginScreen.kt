@@ -69,6 +69,12 @@ fun LoginScreen(
             Text(text = stringResource(R.string.message_login), color = Color.Blue, fontSize = 16.sp)
         }
 
+        TextButton(onClick = { viewModel.resetPassword(state.email){} },
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)) {
+            Text(text = stringResource(R.string.reset_password), color = Color.Blue, fontSize = 16.sp)
+        }
+
 
         ZetaSpaceHeight(70.dp)
         ZetaButtonBasic(

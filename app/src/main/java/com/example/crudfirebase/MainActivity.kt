@@ -14,18 +14,17 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val loginViewModel : LoginViewModel by viewModels()
-        val registerViewModel : RegisterViewModel by viewModels()
-        val homeViewModel : HomeViewModel by viewModels()
+        val loginViewModel: LoginViewModel by viewModels()
+        val registerViewModel: RegisterViewModel by viewModels()
+        val homeViewModel: HomeViewModel by viewModels()
 
         setContent {
             CrudFirebaseTheme {
-               NavGraph(loginViewModel,
-                   registerViewModel,
-                   homeViewModel
-                   )
-
-
+                NavGraph(
+                    loginViewModel,
+                    registerViewModel,
+                    homeViewModel
+                )
             }
         }
     }

@@ -6,6 +6,7 @@
     <string name="login">Entrar</string>
     <string name="email">Correo</string>
     <string name="message_login">Si no tienes cuenta Regístrate aquí!!</string>
+    <string name="reset_password">Recuperar contraseña!!</string>
     <string name="message_register">Si ya tienes una cuenta entra aqui!!</string>
     <string name="error">Error</string>
     <string name="message_alert_login">Usuario y/o contraseña incorrectos</string>
