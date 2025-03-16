@@ -19,10 +19,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.crudfirebase.R
 import com.example.crudfirebase.ui.register.viewModel.RegisterViewModel
-import com.example.crudfirebase.utils.components.ZetaButtonBasic
-import com.example.crudfirebase.utils.components.ZetaOutlinedTextField
-import com.example.crudfirebase.utils.components.ZetaSpaceHeight
-import com.example.crudfirebase.utils.components.ZetaText
+import com.example.crudfirebase.ui.components.ZetaAlertDialog
+import com.example.crudfirebase.ui.components.ZetaButtonBasic
+import com.example.crudfirebase.ui.components.ZetaOutlinedTextField
+import com.example.crudfirebase.ui.components.ZetaSpaceHeight
+import com.example.crudfirebase.ui.components.ZetaText
 
 @Composable
 fun RegisterScreen(
@@ -53,6 +54,15 @@ fun RegisterScreen(
         )
         ZetaSpaceHeight(20.dp)
         ZetaOutlinedTextField(
+            value = state.name,
+            onValueChange = { viewModel.onNameChange(it) },
+            label = stringResource(R.string.name),
+            keyboardType = KeyboardType.Text
+
+        )
+
+        ZetaSpaceHeight(20.dp)
+        ZetaOutlinedTextField(
             value = state.password,
             onValueChange = { viewModel.onPasswordChange(it) },
             label = stringResource(R.string.password),
@@ -76,20 +86,37 @@ fun RegisterScreen(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
         ) {
-            Text(text = stringResource(R.string.message_register), color = Color.Blue, fontSize = 16.sp)
+            Text(
+                text = stringResource(R.string.message_register),
+                color = Color.Blue,
+                fontSize = 16.sp
+            )
         }
         ZetaSpaceHeight(100.dp)
         ZetaButtonBasic(
             text = stringResource(R.string.register),
             color = Color.Black,
             textSize = 20.sp,
-            onClick = { viewModel.createUser(email = state.email, password = state.password ){
-                navController.navigate("login_screen")
-            } },
+            onClick = {
+                viewModel.createUser(
+                    email = state.email,
+                    name = state.name,
+                    password = state.password,
+                    confirmPassword = state.confirmPassword
+                ) {
+                    navController.navigate("login_screen")
+                }
+            },
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .fillMaxWidth()
         )
+        if (state.showAlert)
+            ZetaAlertDialog(
+                title = stringResource(R.string.error),
+                message = stringResource(R.string.message_alert_register),
+                confirmText = stringResource(R.string.accept),
+                onConfirmClick = { viewModel.closeAlert() }
+            ) { }
     }
-
 }

@@ -19,10 +19,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.crudfirebase.R
 import com.example.crudfirebase.ui.login.viewModel.LoginViewModel
-import com.example.crudfirebase.utils.components.ZetaButtonBasic
-import com.example.crudfirebase.utils.components.ZetaOutlinedTextField
-import com.example.crudfirebase.utils.components.ZetaSpaceHeight
-import com.example.crudfirebase.utils.components.ZetaText
+import com.example.crudfirebase.ui.components.ZetaAlertDialog
+import com.example.crudfirebase.ui.components.ZetaButtonBasic
+import com.example.crudfirebase.ui.components.ZetaOutlinedTextField
+import com.example.crudfirebase.ui.components.ZetaSpaceHeight
+import com.example.crudfirebase.ui.components.ZetaText
 
 @Composable
 fun LoginScreen(
@@ -31,6 +32,7 @@ fun LoginScreen(
 ) {
 
     val state by viewModel.loginState.collectAsState()
+
 
     Column {
         ZetaText(
@@ -77,5 +79,14 @@ fun LoginScreen(
                 navController.navigate("home_screen")
             } }
         )
+
+        if (state.showAlert){
+            ZetaAlertDialog(
+                title = stringResource(R.string.error),
+                message = stringResource(R.string.message_alert_login),
+                confirmText = stringResource(R.string.accept),
+                onConfirmClick = { viewModel.closeAlert() }
+            ) { }
+        }
     }
 }
