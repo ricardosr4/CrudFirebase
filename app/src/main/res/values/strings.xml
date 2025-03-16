@@ -7,4 +7,9 @@
     <string name="email">Correo</string>
     <string name="message_login">Si no tienes cuenta Regístrate aquí!!</string>
     <string name="message_register">Si ya tienes una cuenta entra aqui!!</string>
+    <string name="error">Error</string>
+    <string name="message_alert_login">Usuario y/o contraseña incorrectos</string>
+    <string name="message_alert_register">Usuario y/o contraseña incorrectos</string>
+    <string name="accept">Aceptar</string>
+    <string name="name">Nombre</string>
 </resources>
