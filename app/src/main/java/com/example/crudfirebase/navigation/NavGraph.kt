@@ -9,6 +9,7 @@ import com.example.crudfirebase.ui.home.viewModel.HomeViewModel
 import com.example.crudfirebase.ui.login.screen.BlankScreen
 import com.example.crudfirebase.ui.login.screen.LoginScreen
 import com.example.crudfirebase.ui.login.viewModel.LoginViewModel
+import com.example.crudfirebase.ui.notes.screen.AddNotesScreen
 import com.example.crudfirebase.ui.register.registerScreen.RegisterScreen
 import com.example.crudfirebase.ui.register.viewModel.RegisterViewModel
 
@@ -34,6 +35,10 @@ fun NavGraph(
         composable("home_screen") {
             HomeScreen(navController, homeViewModel)
         }
+        composable("add_notes_screen") {
+            AddNotesScreen(navController, homeViewModel)
+        }
+
 
     }
 }
